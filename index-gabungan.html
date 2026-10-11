@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Persediaan & Penjualan Buku</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--ink:#20213a;--muted:#777b91;--purple:#6558d3;--purple-dark:#5144bb;--line:#e9eaf2;--bg:#f7f8fc;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:14px}.topbar{height:84px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:13px;padding:0 max(calc((100vw - 1180px)/2),24px)}.brand-mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#7669e9,#5144bb);color:white;display:grid;place-items:center;font-weight:800;font-size:16px;box-shadow:0 7px 18px #6558d333}.topbar h1{font:800 19px Manrope,sans-serif;margin:0 0 3px}.topbar p{margin:0;color:var(--muted);font-size:12px}.top-pill{margin-left:auto;border:1px solid #e7e4ff;background:#f6f4ff;color:#5d51c6;padding:9px 13px;border-radius:30px;font-size:12px;font-weight:600}.container{max-width:1180px;margin:30px auto;padding:0 22px}.hero{background:linear-gradient(115deg,#28244f,#5144a9 72%,#7165db);border-radius:22px;padding:32px 38px;color:#fff;display:flex;justify-content:space-between;align-items:center;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #ffffff1c;border-radius:50%;right:35px;top:-135px;box-shadow:0 0 0 35px #ffffff08,0 0 0 70px #ffffff06}.eyebrow{font-size:10px;letter-spacing:1.7px;font-weight:700;color:#a9a2ff;margin:0 0 12px}.hero h2{font:800 clamp(23px,3vw,32px)/1.28 Manrope,sans-serif;margin:0}.hero h2 span{color:#c9c4ff}.hero-copy{color:#e0ddff;margin:14px 0 0;max-width:540px;line-height:1.6}.hero-icon{font-size:68px;z-index:1;margin-right:28px;filter:drop-shadow(0 12px 14px #17133c55)}.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:22px 0}.stat-card{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px 18px;min-width:0}.stat-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;font-size:20px;font-weight:700;flex-shrink:0}.purple{background:#f0edff;color:#6c5cdb}.blue{background:#e8f4ff;color:#3d8bc6}.green{background:#e6f8ef;color:#26986a}.orange{background:#fff1e5;color:#d67c2f;font-size:13px}.stat-card p{margin:0 0 5px;color:var(--muted);font-size:12px}.stat-card strong{font:800 23px Manrope,sans-serif;letter-spacing:-.5px;display:inline-block;max-width:100%;overflow:hidden;text-overflow:ellipsis}.stat-card small{color:var(--muted);margin-left:5px;font-size:10px}.tabs{display:flex;gap:7px;padding:7px;background:#eeeff7;border-radius:14px;margin:26px 0 16px;overflow-x:auto}.tab{white-space:nowrap;border:0;background:transparent;padding:12px 17px;border-radius:10px;color:#777b91;font:600 13px 'DM Sans',sans-serif;cursor:pointer}.tab.active{background:#fff;color:var(--purple);box-shadow:0 2px 8px #2b275b0d}.panel{display:none;background:#fff;border:1px solid var(--line);border-radius:17px;padding:25px}.panel.active{display:block}.section-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.section-heading h3{font:800 19px Manrope,sans-serif;margin:0 0 6px}.section-heading p{margin:0;color:var(--muted);font-size:12px}.primary-btn,.secondary-btn{border:0;border-radius:10px;padding:11px 15px;font:700 12px 'DM Sans',sans-serif;cursor:pointer;white-space:nowrap}.primary-btn{background:var(--purple);color:#fff;box-shadow:0 5px 12px #6558d326}.primary-btn:hover{background:var(--purple-dark)}.secondary-btn{background:#f0f1f7;color:#62657a}.toolbar{margin-bottom:15px}.toolbar input{width:min(100%,370px);border:1px solid var(--line);border-radius:10px;padding:11px 13px;font:13px 'DM Sans',sans-serif;outline:none}.toolbar input:focus,.field input:focus,.field select:focus{border-color:#8a80e5;box-shadow:0 0 0 3px #6558d318}.table-wrap{width:100%;overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}thead{background:#f8f8fc}th{padding:13px 14px;color:#777b91;font-size:10px;text-transform:uppercase;letter-spacing:.7px;font-weight:700}td{padding:15px 14px;border-bottom:1px solid #f0f0f5;font-size:12px;color:#42445a}tbody tr:last-child td{border-bottom:0}.book-title{font-weight:700;color:#292a43}.subtext{display:block;color:#9698a9;font-size:10px;margin-top:4px}.stock-badge{display:inline-block;padding:5px 8px;border-radius:7px;background:#e9f8f0;color:#25865d;font-size:11px;font-weight:700}.stock-badge.low{background:#fff0e7;color:#c36c2d}.action-btn{border:1px solid var(--line);background:#fff;color:#6255cc;border-radius:7px;padding:6px 9px;cursor:pointer;font-size:11px;font-weight:700;margin-right:4px}.action-btn.delete{color:#c34f63}.empty{text-align:center;padding:36px 12px;color:#999bad}.footnote{text-align:center;color:#999bad;font-size:11px;padding:19px 0 8px}dialog{border:0;border-radius:18px;padding:0;width:min(530px,calc(100% - 28px));box-shadow:0 24px 90px #18163538}dialog::backdrop{background:#1e1b3c77;backdrop-filter:blur(3px)}dialog form{padding:25px}.dialog-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:22px}.dialog-head .eyebrow{color:#7b70d8;margin-bottom:7px}.dialog-head h3{font:800 21px Manrope,sans-serif;margin:0}.close-btn{border:0;background:#f1f1f8;border-radius:9px;width:32px;height:32px;font-size:23px;color:#6b6d80;cursor:pointer}.form-fields{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:11px;color:#686b80;font-weight:700}.field input,.field select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:9px;font:13px 'DM Sans',sans-serif;background:#fff;outline:none;color:var(--ink)}.dialog-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:25px}.toast{position:fixed;bottom:25px;left:50%;transform:translate(-50%,20px);background:#252344;color:#fff;padding:12px 18px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s;box-shadow:0 10px 25px #1d1a3b33;z-index:5}.toast.show{opacity:1;transform:translate(-50%,0)}@media(max-width:850px){.stats-grid{grid-template-columns:repeat(2,1fr)}.hero-icon{font-size:48px;margin-right:0}.top-pill{display:none}}@media(max-width:540px){.topbar{padding:0 16px}.container{padding:0 13px;margin-top:18px}.hero{padding:25px 22px}.hero-icon{display:none}.stats-grid{gap:9px}.stat-card{padding:13px 11px;gap:9px}.stat-icon{width:35px;height:35px}.stat-card strong{font-size:19px}.panel{padding:17px 12px}.section-heading{align-items:flex-start;flex-direction:column}.form-fields{grid-template-columns:1fr}.field.full{grid-column:auto}.tabs{margin-top:18px}.tab{padding:11px 12px}}
+
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand-mark">BK</div>
+    <div><h1>BukuKita</h1><p>Sistem Persediaan & Penjualan Buku</p></div>
+    <span class="top-pill">Sistem Informasi Toko Buku</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div><p class="eyebrow">DASHBOARD TOKO BUKU</p><h2>Kelola buku, stok, dan penjualan<br><span>dalam satu tempat.</span></h2>
+      <p class="hero-copy">Catat data buku, pemasok, pelanggan, dan transaksi penjualan dengan mudah.</p></div>
+      <div class="hero-icon" aria-hidden="true">📚</div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card"><div class="stat-icon purple">▤</div><div><p>Total Judul Buku</p><strong id="statBooks">0</strong></div></article>
+      <article class="stat-card"><div class="stat-icon blue">▣</div><div><p>Total Stok</p><strong id="statStock">0</strong><small>eksemplar</small></div></article>
+      <article class="stat-card"><div class="stat-icon green">↗</div><div><p>Total Transaksi</p><strong id="statSales">0</strong></div></article>
+      <article class="stat-card"><div class="stat-icon orange">Rp</div><div><p>Total Penjualan</p><strong id="statRevenue">Rp0</strong></div></article>
+    </section>
+
+    <nav class="tabs" aria-label="Menu data">
+      <button class="tab active" data-panel="books">📚 Data Buku</button>
+      <button class="tab" data-panel="suppliers">🏢 Supplier</button>
+      <button class="tab" data-panel="customers">👤 Pelanggan</button>
+      <button class="tab" data-panel="sales">🧾 Penjualan</button>
+    </nav>
+
+    <section class="panel active" id="panel-books">
+      <div class="section-heading"><div><h3>Data Buku</h3><p>Kelola katalog dan jumlah persediaan buku.</p></div><button class="primary-btn" id="addBookBtn">＋ Tambah Buku</button></div>
+      <div class="toolbar"><input id="bookSearch" type="search" placeholder="Cari judul, penulis, atau ISBN..."></div>
+      <div class="table-wrap"><table><thead><tr><th>ISBN</th><th>Judul Buku</th><th>Penulis</th><th>Supplier</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr></thead><tbody id="booksBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-suppliers">
+      <div class="section-heading"><div><h3>Data Supplier</h3><p>Data pemasok buku untuk kebutuhan persediaan.</p></div><button class="primary-btn" id="addSupplierBtn">＋ Tambah Supplier</button></div>
+      <div class="toolbar"><input id="supplierSearch" type="search" placeholder="Cari nama atau kontak supplier..."></div>
+      <div class="table-wrap"><table><thead><tr><th>Nama Supplier</th><th>Kontak</th><th>Telepon</th><th>Alamat</th><th>Aksi</th></tr></thead><tbody id="suppliersBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-customers">
+      <div class="section-heading"><div><h3>Data Pelanggan</h3><p>Simpan informasi pelanggan toko buku.</p></div><button class="primary-btn" id="addCustomerBtn">＋ Tambah Pelanggan</button></div>
+      <div class="toolbar"><input id="customerSearch" type="search" placeholder="Cari nama atau telepon pelanggan..."></div>
+      <div class="table-wrap"><table><thead><tr><th>Nama Pelanggan</th><th>Telepon</th><th>Email</th><th>Alamat</th><th>Aksi</th></tr></thead><tbody id="customersBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-sales">
+      <div class="section-heading"><div><h3>Transaksi Penjualan</h3><p>Catat penjualan dan stok akan berkurang otomatis.</p></div><button class="primary-btn" id="addSaleBtn">＋ Transaksi Baru</button></div>
+      <div class="toolbar"><input id="salesSearch" type="search" placeholder="Cari nomor transaksi atau pelanggan..."></div>
+      <div class="table-wrap"><table><thead><tr><th>No. Transaksi</th><th>Tanggal</th><th>Pelanggan</th><th>Buku</th><th>Qty</th><th>Total</th><th>Aksi</th></tr></thead><tbody id="salesBody"></tbody></table></div>
+    </section>
+    <p class="footnote">Data disimpan di browser perangkat ini (localStorage). Gunakan menu Ekspor untuk membuat cadangan.</p>
+  </main>
+
+  <dialog id="dataDialog">
+    <form id="dataForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow" id="dialogEyebrow">FORM DATA</p><h3 id="dialogTitle">Tambah Data</h3></div><button type="button" class="close-btn" id="closeDialog" aria-label="Tutup">×</button></div>
+      <div id="formFields" class="form-fields"></div>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancelDialog">Batal</button><button type="submit" class="primary-btn">Simpan Data</button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status" class="toast"></div>
+  <script>
+const STORAGE_KEY = "bukukita-data-v1";
+const initialData = {
+  books: [
+    {id:1,isbn:"9786020324784",title:"Laskar Pelangi",author:"Andrea Hirata",supplierId:1,price:85000,stock:18},
+    {id:2,isbn:"9786020651929",title:"Bumi",author:"Tere Liye",supplierId:1,price:95000,stock:12},
+    {id:3,isbn:"9789797808703",title:"Filosofi Teras",author:"Henry Manampiring",supplierId:2,price:98000,stock:7}
+  ],
+  suppliers:[
+    {id:1,name:"CV Pustaka Nusantara",contact:"Rina",phone:"081234567890",address:"Yogyakarta"},
+    {id:2,name:"PT Buku Cerdas",contact:"Budi",phone:"082112223333",address:"Semarang"}
+  ],
+  customers:[
+    {id:1,name:"Pelanggan Umum",phone:"-",email:"-",address:"-"},
+    {id:2,name:"Nadia Putri",phone:"081298765432",email:"nadia@email.com",address:"Yogyakarta"}
+  ],
+  sales:[]
+};
+let data = loadData();
+let editing = null;
+const $ = id => document.getElementById(id);
+const rupiah = n => new Intl.NumberFormat("id-ID",{style:"currency",currency:"IDR",maximumFractionDigits:0}).format(Number(n)||0);
+const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function loadData(){try{return JSON.parse(localStorage.getItem(STORAGE_KEY))||structuredClone(initialData)}catch{return structuredClone(initialData)}}
+function saveData(){localStorage.setItem(STORAGE_KEY,JSON.stringify(data));renderAll()}
+function nextId(list){return list.reduce((m,x)=>Math.max(m,Number(x.id)||0),0)+1}
+function supplierName(id){return data.suppliers.find(x=>x.id===Number(id))?.name||"Supplier dihapus"}
+function customerName(id){return data.customers.find(x=>x.id===Number(id))?.name||"Pelanggan dihapus"}
+function bookName(id){return data.books.find(x=>x.id===Number(id))?.title||"Buku dihapus"}
+function showToast(message){const t=$("toast");t.textContent=message;t.classList.add("show");clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.remove("show"),2400)}
+function emptyRow(cols,msg){return `<tr><td colspan="${cols}" class="empty">${msg}</td></tr>`}
+function renderStats(){
+  $("statBooks").textContent=data.books.length;
+  $("statStock").textContent=data.books.reduce((n,b)=>n+Number(b.stock),0);
+  $("statSales").textContent=data.sales.length;
+  $("statRevenue").textContent=rupiah(data.sales.reduce((n,s)=>n+Number(s.total),0));
+}
+function renderBooks(){
+ const q=$("bookSearch").value.toLowerCase();
+ const rows=data.books.filter(b=>[b.title,b.author,b.isbn].join(" ").toLowerCase().includes(q));
+ $("booksBody").innerHTML=rows.map(b=>`<tr><td>${esc(b.isbn)}</td><td><span class="book-title">${esc(b.title)}</span><span class="subtext">ID Buku: ${b.id}</span></td><td>${esc(b.author)}</td><td>${esc(supplierName(b.supplierId))}</td><td>${rupiah(b.price)}</td><td><span class="stock-badge ${b.stock<5?"low":""}">${b.stock} eks.</span></td><td><button class="action-btn" data-action="edit" data-type="books" data-id="${b.id}">Edit</button><button class="action-btn delete" data-action="delete" data-type="books" data-id="${b.id}">Hapus</button></td></tr>`).join("")||emptyRow(7,"Belum ada data buku yang cocok.");
+}
+function renderSuppliers(){
+ const q=$("supplierSearch").value.toLowerCase();
+ const rows=data.suppliers.filter(s=>[s.name,s.contact,s.phone,s.address].join(" ").toLowerCase().includes(q));
+ $("suppliersBody").innerHTML=rows.map(s=>`<tr><td><span class="book-title">${esc(s.name)}</span><span class="subtext">ID Supplier: ${s.id}</span></td><td>${esc(s.contact)}</td><td>${esc(s.phone)}</td><td>${esc(s.address)}</td><td><button class="action-btn" data-action="edit" data-type="suppliers" data-id="${s.id}">Edit</button><button class="action-btn delete" data-action="delete" data-type="suppliers" data-id="${s.id}">Hapus</button></td></tr>`).join("")||emptyRow(5,"Belum ada data supplier.");
+}
+function renderCustomers(){
+ const q=$("customerSearch").value.toLowerCase();
+ const rows=data.customers.filter(c=>[c.name,c.phone,c.email,c.address].join(" ").toLowerCase().includes(q));
+ $("customersBody").innerHTML=rows.map(c=>`<tr><td><span class="book-title">${esc(c.name)}</span><span class="subtext">ID Pelanggan: ${c.id}</span></td><td>${esc(c.phone)}</td><td>${esc(c.email)}</td><td>${esc(c.address)}</td><td><button class="action-btn" data-action="edit" data-type="customers" data-id="${c.id}">Edit</button><button class="action-btn delete" data-action="delete" data-type="customers" data-id="${c.id}">Hapus</button></td></tr>`).join("")||emptyRow(5,"Belum ada data pelanggan.");
+}
+function renderSales(){
+ const q=$("salesSearch").value.toLowerCase();
+ const rows=data.sales.filter(s=>[s.number,customerName(s.customerId),bookName(s.bookId),s.date].join(" ").toLowerCase().includes(q));
+ $("salesBody").innerHTML=rows.slice().reverse().map(s=>`<tr><td><span class="book-title">${esc(s.number)}</span></td><td>${esc(s.date)}</td><td>${esc(customerName(s.customerId))}</td><td>${esc(bookName(s.bookId))}</td><td>${s.qty}</td><td><strong>${rupiah(s.total)}</strong></td><td><button class="action-btn delete" data-action="delete" data-type="sales" data-id="${s.id}">Hapus</button></td></tr>`).join("")||emptyRow(7,"Belum ada transaksi penjualan.");
+}
+function renderAll(){renderStats();renderBooks();renderSuppliers();renderCustomers();renderSales()}
+const schemas={
+ books:{title:"Buku",fields:[
+  {key:"isbn",label:"ISBN",placeholder:"978...",required:true},
+  {key:"title",label:"Judul Buku",placeholder:"Masukkan judul buku",required:true,full:true},
+  {key:"author",label:"Penulis",placeholder:"Nama penulis",required:true},
+  {key:"supplierId",label:"Supplier",type:"select",options:()=>data.suppliers.map(s=>({value:s.id,label:s.name})),required:true},
+  {key:"price",label:"Harga Jual (Rp)",type:"number",min:0,required:true},
+  {key:"stock",label:"Stok Awal",type:"number",min:0,required:true}
+ ]},
+ suppliers:{title:"Supplier",fields:[
+  {key:"name",label:"Nama Supplier",required:true,full:true},{key:"contact",label:"Nama Kontak",required:true},
+  {key:"phone",label:"Nomor Telepon",required:true},{key:"address",label:"Alamat",required:true,full:true}
+ ]},
+ customers:{title:"Pelanggan",fields:[
+  {key:"name",label:"Nama Pelanggan",required:true,full:true},{key:"phone",label:"Nomor Telepon",required:true},
+  {key:"email",label:"Email",type:"email"},{key:"address",label:"Alamat",required:true,full:true}
+ ]},
+ sales:{title:"Transaksi Penjualan",fields:[
+  {key:"customerId",label:"Pelanggan",type:"select",options:()=>data.customers.map(c=>({value:c.id,label:c.name})),required:true},
+  {key:"bookId",label:"Buku",type:"select",options:()=>data.books.map(b=>({value:b.id,label:`${b.title} — stok ${b.stock} — ${rupiah(b.price)}`})),required:true},
+  {key:"qty",label:"Jumlah Buku",type:"number",min:1,required:true},
+  {key:"date",label:"Tanggal Transaksi",type:"date",required:true}
+ ]}
+};
+function openForm(type,id=null){
+ if(type==="sales"&&(!data.books.length||!data.customers.length)){showToast("Tambahkan data buku dan pelanggan terlebih dahulu.");return}
+ if(type==="books"&&!data.suppliers.length){showToast("Tambahkan minimal satu supplier terlebih dahulu.");return}
+ editing=id===null?null:{type,id};
+ const schema=schemas[type], item=id===null?{}:data[type].find(x=>x.id===id);
+ $("dialogEyebrow").textContent=editing?"UBAH DATA":"TAMBAH DATA";
+ $("dialogTitle").textContent=(editing?"Edit ":"Tambah ")+schema.title;
+ $("formFields").innerHTML=schema.fields.map(f=>{
+  const value=item?.[f.key]??(f.key==="qty"?1:f.key==="date"?new Date().toISOString().slice(0,10):"");
+  let control="";
+  if(f.type==="select"){
+   const opts=f.options();
+   control=`<select id="field_${f.key}" name="${f.key}" ${f.required?"required":""}>${opts.map(o=>`<option value="${o.value}" ${String(value)===String(o.value)?"selected":""}>${esc(o.label)}</option>`).join("")}</select>`;
+  }else{
+   control=`<input id="field_${f.key}" name="${f.key}" type="${f.type||"text"}" value="${esc(value)}" ${f.placeholder?`placeholder="${esc(f.placeholder)}"`:""} ${f.min!==undefined?`min="${f.min}"`:""} ${f.required?"required":""} ${f.type==="number"?"step":"data-none"}="${f.type==="number"?"1":""}">`;
+  }
+  return `<div class="field ${f.full?"full":""}"><label for="field_${f.key}">${f.label}${f.required?" *":""}</label>${control}</div>`;
+ }).join("");
+ $("dataDialog").showModal();
+}
+function closeForm(){$("dataDialog").close();editing=null}
+$("dataForm").addEventListener("submit",e=>{
+ e.preventDefault();const form=new FormData(e.currentTarget);const type=editing?.type||activeType();const schema=schemas[type];const item={};
+ schema.fields.forEach(f=>{let v=form.get(f.key);if(f.type==="number"||["price","stock","supplierId","customerId","bookId","qty"].includes(f.key))v=Number(v);item[f.key]=v});
+ if(type==="sales"){
+  const book=data.books.find(b=>b.id===item.bookId);
+  if(!book||book.stock<item.qty){showToast("Stok buku tidak mencukupi.");return}
+  book.stock-=item.qty;
+  item.id=nextId(data.sales);item.number="TRX-"+String(item.id).padStart(4,"0");item.unitPrice=book.price;item.total=book.price*item.qty;
+  data.sales.push(item);
+ }else if(editing){
+  const idx=data[type].findIndex(x=>x.id===editing.id);data[type][idx]={...data[type][idx],...item,id:editing.id};
+ }else{item.id=nextId(data[type]);data[type].push(item)}
+ saveData();closeForm();showToast(type==="sales"?"Transaksi berhasil disimpan.":"Data berhasil disimpan.");
+});
+function activeType(){return document.querySelector(".tab.active").dataset.panel}
+function deleteRecord(type,id){
+ const item=data[type].find(x=>x.id===id);if(!item)return;
+ if(type==="books"&&data.sales.some(s=>s.bookId===id)){showToast("Buku memiliki riwayat transaksi, tidak dapat dihapus.");return}
+ if(type==="customers"&&data.sales.some(s=>s.customerId===id)){showToast("Pelanggan memiliki riwayat transaksi, tidak dapat dihapus.");return}
+ if(type==="suppliers"&&data.books.some(b=>b.supplierId===id)){showToast("Supplier masih digunakan oleh data buku.");return}
+ if(!confirm(`Hapus ${type==="sales"?"transaksi "+item.number:"data ini"}?`))return;
+ if(type==="sales"){const book=data.books.find(b=>b.id===item.bookId);if(book)book.stock+=Number(item.qty)}
+ data[type]=data[type].filter(x=>x.id!==id);saveData();showToast("Data berhasil dihapus.");
+}
+document.querySelectorAll(".tab").forEach(btn=>btn.addEventListener("click",()=>{
+ document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b===btn));
+ document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",p.id==="panel-"+btn.dataset.panel));
+}));
+$("addBookBtn").onclick=()=>openForm("books");$("addSupplierBtn").onclick=()=>openForm("suppliers");$("addCustomerBtn").onclick=()=>openForm("customers");$("addSaleBtn").onclick=()=>openForm("sales");
+$("closeDialog").onclick=closeForm;$("cancelDialog").onclick=closeForm;
+document.querySelectorAll("#bookSearch,#supplierSearch,#customerSearch,#salesSearch").forEach(el=>el.addEventListener("input",renderAll));
+document.body.addEventListener("click",e=>{
+ const btn=e.target.closest("[data-action]");if(!btn)return;
+ const type=btn.dataset.type,id=Number(btn.dataset.id);
+ if(btn.dataset.action==="edit")openForm(type,id);else if(btn.dataset.action==="delete")deleteRecord(type,id);
+});
+renderAll();
+
+  </script>
+</body>
+</html>
