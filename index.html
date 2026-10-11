@@ -2,10 +2,73 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=frontend/index.html">
-  <title>BukuKita</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Persediaan & Penjualan Buku</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <p>Mengalihkan ke <a href="frontend/index.html">BukuKita</a>...</p>
+  <header class="topbar">
+    <div class="brand-mark">BK</div>
+    <div><h1>BukuKita</h1><p>Sistem Persediaan & Penjualan Buku</p></div>
+    <span class="top-pill">Sistem Informasi Toko Buku</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div><p class="eyebrow">DASHBOARD TOKO BUKU</p><h2>Kelola buku, stok, dan penjualan<br><span>dalam satu tempat.</span></h2>
+      <p class="hero-copy">Catat data buku, pemasok, pelanggan, dan transaksi penjualan dengan mudah.</p></div>
+      <div class="hero-icon" aria-hidden="true">📚</div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card"><div class="stat-icon purple">▤</div><div><p>Total Judul Buku</p><strong id="statBooks">0</strong></div></article>
+      <article class="stat-card"><div class="stat-icon blue">▣</div><div><p>Total Stok</p><strong id="statStock">0</strong><small>eksemplar</small></div></article>
+      <article class="stat-card"><div class="stat-icon green">↗</div><div><p>Total Transaksi</p><strong id="statSales">0</strong></div></article>
+      <article class="stat-card"><div class="stat-icon orange">Rp</div><div><p>Total Penjualan</p><strong id="statRevenue">Rp0</strong></div></article>
+    </section>
+
+    <nav class="tabs" aria-label="Menu data">
+      <button class="tab active" data-panel="books">📚 Data Buku</button>
+      <button class="tab" data-panel="suppliers">🏢 Supplier</button>
+      <button class="tab" data-panel="customers">👤 Pelanggan</button>
+      <button class="tab" data-panel="sales">🧾 Penjualan</button>
+    </nav>
+
+    <section class="panel active" id="panel-books">
+      <div class="section-heading"><div><h3>Data Buku</h3><p>Kelola katalog dan jumlah persediaan buku.</p></div><button class="primary-btn" id="addBookBtn">＋ Tambah Buku</button></div>
+      <div class="toolbar"><input id="bookSearch" type="search" placeholder="Cari judul, penulis, atau ISBN..."></div>
+      <div class="table-wrap"><table><thead><tr><th>ISBN</th><th>Judul Buku</th><th>Penulis</th><th>Supplier</th><th>Harga</th><th>Stok</th><th>Aksi</th></tr></thead><tbody id="booksBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-suppliers">
+      <div class="section-heading"><div><h3>Data Supplier</h3><p>Data pemasok buku untuk kebutuhan persediaan.</p></div><button class="primary-btn" id="addSupplierBtn">＋ Tambah Supplier</button></div>
+      <div class="toolbar"><input id="supplierSearch" type="search" placeholder="Cari nama atau kontak supplier..."></div>
+      <div class="table-wrap"><table><thead><tr><th>Nama Supplier</th><th>Kontak</th><th>Telepon</th><th>Alamat</th><th>Aksi</th></tr></thead><tbody id="suppliersBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-customers">
+      <div class="section-heading"><div><h3>Data Pelanggan</h3><p>Simpan informasi pelanggan toko buku.</p></div><button class="primary-btn" id="addCustomerBtn">＋ Tambah Pelanggan</button></div>
+      <div class="toolbar"><input id="customerSearch" type="search" placeholder="Cari nama atau telepon pelanggan..."></div>
+      <div class="table-wrap"><table><thead><tr><th>Nama Pelanggan</th><th>Telepon</th><th>Email</th><th>Alamat</th><th>Aksi</th></tr></thead><tbody id="customersBody"></tbody></table></div>
+    </section>
+
+    <section class="panel" id="panel-sales">
+      <div class="section-heading"><div><h3>Transaksi Penjualan</h3><p>Catat penjualan dan stok akan berkurang otomatis.</p></div><button class="primary-btn" id="addSaleBtn">＋ Transaksi Baru</button></div>
+      <div class="toolbar"><input id="salesSearch" type="search" placeholder="Cari nomor transaksi atau pelanggan..."></div>
+      <div class="table-wrap"><table><thead><tr><th>No. Transaksi</th><th>Tanggal</th><th>Pelanggan</th><th>Buku</th><th>Qty</th><th>Total</th><th>Aksi</th></tr></thead><tbody id="salesBody"></tbody></table></div>
+    </section>
+    <p class="footnote">Data tersimpan di database Supabase dan dapat diakses dari perangkat mana pun.</p>
+  </main>
+
+  <dialog id="dataDialog">
+    <form id="dataForm" method="dialog">
+      <div class="dialog-head"><div><p class="eyebrow" id="dialogEyebrow">FORM DATA</p><h3 id="dialogTitle">Tambah Data</h3></div><button type="button" class="close-btn" id="closeDialog" aria-label="Tutup">×</button></div>
+      <div id="formFields" class="form-fields"></div>
+      <div class="dialog-actions"><button type="button" class="secondary-btn" id="cancelDialog">Batal</button><button type="submit" class="primary-btn">Simpan Data</button></div>
+    </form>
+  </dialog>
+  <div id="toast" role="status" class="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
