@@ -1,5 +1,7 @@
 # 📚 BukuKita — Sistem Persediaan & Penjualan Buku
 
+Link: https://nesyaatb123-byte.github.io/Buku-Kita/
+
 Aplikasi web untuk mengelola buku, supplier, pelanggan, dan transaksi penjualan. Stok buku berkurang otomatis saat ada penjualan dan kembali saat transaksi dihapus.
 
 ## Struktur
